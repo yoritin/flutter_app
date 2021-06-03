@@ -40,6 +40,10 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
+        actions: <Widget>[
+          Icon(Icons.add),
+          Icon(Icons.share)
+        ],
       ),
       body: Center(
         child: Column(
