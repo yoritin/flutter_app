@@ -46,15 +46,19 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
         child: Column(
           children: [
-            Text(
-              'こんにちは',
-              style: TextStyle(
-                fontSize: 40,
-                color: Colors.green,
-                fontWeight: FontWeight.bold,
-                fontStyle: FontStyle.italic,
-                decoration: TextDecoration.lineThrough,
-              )
+            Container(
+              width: double.infinity,
+              child: Text(
+                'こんにちは',
+                style: TextStyle(
+                  fontSize: 40,
+                  color: Colors.green,
+                  fontWeight: FontWeight.bold,
+                  fontStyle: FontStyle.italic,
+                  decoration: TextDecoration.lineThrough,
+                ),
+                textAlign: TextAlign.right,
+              ),
             ),
             Text('かたよりです'),
           ],
