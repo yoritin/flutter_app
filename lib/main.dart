@@ -37,33 +37,43 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  final myFocusNode = FocusNode();
+
+  late String name;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Center(
+      body: Container(
+        width: double.infinity,
         child: Column(
           children: [
-            Container(
-              width: double.infinity,
-              child: Text(
-                'こんにちは',
-                style: TextStyle(
-                  fontSize: 40,
-                  color: Colors.green,
-                  fontWeight: FontWeight.bold,
-                  fontStyle: FontStyle.italic,
-                  decoration: TextDecoration.lineThrough,
-                ),
-                textAlign: TextAlign.right,
+            TextField(
+              decoration: InputDecoration(
+                hintText: '名前',
+              ),
+              onChanged: (text) {
+                name = text;
+              },
+            ),
+            TextField(
+              focusNode: myFocusNode,
+              decoration: InputDecoration(
+                hintText: 'メールアドレス',
               ),
             ),
-            Text('かたよりです'),
+            RaisedButton(
+              child: Text('新規登録'),
+              onPressed: () {
+                myFocusNode.requestFocus();
+              },
+            ),
           ],
-        ),
-      ),
+        )
+      )
     );
   }
 }
