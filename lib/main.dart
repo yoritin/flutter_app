@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'next_page.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -35,35 +37,25 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  final items = List<String>.generate(10000, (i) => "Item $i");
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
-        actions: <Widget>[
-          Icon(Icons.add),
-          Icon(Icons.share)
-        ],
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      body: Container(
+        width: double.infinity,
+        child: ListView.builder(
+          itemCount: items.length,
+          itemBuilder: (context, index) {
+            return ListTile(
+              title: Text('${items[index]}'),
+            );
+          },
+        )
+      )
     );
   }
 }
