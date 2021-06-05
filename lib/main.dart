@@ -37,9 +37,7 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
-  final myFocusNode = FocusNode();
-
-  late String name;
+  final items = List<String>.generate(10000, (i) => "Item $i");
 
   @override
   Widget build(BuildContext context) {
@@ -49,29 +47,13 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Container(
         width: double.infinity,
-        child: Column(
-          children: [
-            TextField(
-              decoration: InputDecoration(
-                hintText: '名前',
-              ),
-              onChanged: (text) {
-                name = text;
-              },
-            ),
-            TextField(
-              focusNode: myFocusNode,
-              decoration: InputDecoration(
-                hintText: 'メールアドレス',
-              ),
-            ),
-            RaisedButton(
-              child: Text('新規登録'),
-              onPressed: () {
-                myFocusNode.requestFocus();
-              },
-            ),
-          ],
+        child: ListView.builder(
+          itemCount: items.length,
+          itemBuilder: (context, index) {
+            return ListTile(
+              title: Text('${items[index]}'),
+            );
+          },
         )
       )
     );
