@@ -10,11 +10,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Plants Log',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.grey,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(title: 'Plants Log'),
     );
   }
 }
@@ -30,6 +30,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
+  var plants = ['ionantha', 'usneoides'];
 
   void _incrementCounter() {
     setState(() {
@@ -45,15 +46,9 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: GridView.count(
         crossAxisCount: 3,
-        children: List.generate(10, (index) {
+        children: List.generate(plants.length, (index) {
           return Center(
-            child: Container(
-              width: 100,
-              height: 160,
-              margin: EdgeInsets.fromLTRB(10, 10, 10, 10),
-              decoration: BoxDecoration(
-                border: Border.all(color: Colors.black),
-              ),
+            child: Card(
               child: GestureDetector(
                   onTap: () {
                     showDialog(
@@ -63,44 +58,8 @@ class _MyHomePageState extends State<MyHomePage> {
                           children: <Widget>[
                             SimpleDialogOption(
                               onPressed: () => Navigator.pop(context),
-                              child: Row(
-                                  children: [
-                                    Container(
-                                      width: 180,
-                                      margin: EdgeInsets.fromLTRB(0, 0, 10, 0),
-                                      child: Column(
-                                          crossAxisAlignment: CrossAxisAlignment.start,
-                                          children: [
-                                            Container(
-                                                margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
-                                                child: Text('基礎から学ぶFlutter', style: TextStyle(fontWeight: FontWeight.bold))
-                                            ),
-                                            Container(
-                                                margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
-                                                child: Text('Flutterの本です。Flutterの本です。Flutterの本です。Flutterの本です。Flutterの本です。Flutterの本です。')
-                                            ),
-                                            RaisedButton(
-                                              child: Text('ダウンロード'),
-                                              color: Colors.green,
-                                              textColor: Colors.white,
-                                              shape: RoundedRectangleBorder(
-                                                borderRadius: BorderRadius.circular(10),
-                                              ),
-                                              onPressed: () {
-                                                // PDR Viewerを開く
-                                              },
-                                            )
-                                          ]
-                                      ),
-                                    ),
-                                    Expanded(
-                                        child: Container(
-                                            width: 80,
-                                            height: 120,
-                                            child: Image.network('https://images-na.ssl-images-amazon.com/images/I/81r-0HdedOL.jpg')
-                                        )
-                                    )
-                                  ]
+                              child: Container(
+                                child: Text(plants[index])
                               ),
                             ),
                           ],
@@ -108,7 +67,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       },
                     );
                   },
-                  child: Image.network('https://images-na.ssl-images-amazon.com/images/I/81r-0HdedOL.jpg')
+                  child: Image.network('https://lh3.googleusercontent.com/proxy/-3PLSDtzqEP4T1xkc1diG1U4HzM_A-E8OsGBBicb8sHhz7Gk6WuZJhfs2t0BAguLZJ_2OSaVekv15Azp42xI-qWW3XxRmyqcY5qvlXk2H8i0dsTvuSa_pIsySyMB9AVkd1zZD8vmTuHC8orjlgvL8SxQWEEPsp79m44')
               ),
             ),
           );
