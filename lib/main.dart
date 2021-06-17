@@ -14,55 +14,38 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.grey,
       ),
-      home: MyHomePage(title: 'Plants Log'),
+      home: PlantsList(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key? key, required this.title}) : super(key: key);
-
-  final String title;
-
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
+class PlantsList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text('タイトルです'),
       ),
-      body: GridView.count(
-        crossAxisCount: 3,
-        children: List.generate(_counter, (index) {
-          return Center(
-            child: Card(
-              child: GestureDetector(
-                onTap: () {},
-                child: Container(
-                  color: Colors.grey,
-                ),
-              ),
-            ),
-          );
-        }),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          _incrementCounter();
-        },
+      body: Center(
+        child: PlantsText(),
       ),
     );
+  }
+}
+
+class PlantsText extends StatefulWidget {
+
+  @override
+  _PlantsTextState createState() => _PlantsTextState();
+}
+
+class _PlantsTextState extends State<PlantsText> {
+
+  String _text = 'plants';
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(_text);
   }
 }
