@@ -45,7 +45,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: GridView.count(
         crossAxisCount: 3,
-        children: List.generate(10, (index) {
+        children: List.generate(_counter, (index) {
           return Center(
             child: Card(
               child: GestureDetector(
@@ -57,7 +57,12 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           );
         }),
-      )
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          _incrementCounter();
+        },
+      ),
     );
   }
 }
