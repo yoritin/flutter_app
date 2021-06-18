@@ -42,10 +42,21 @@ class PlantsText extends StatefulWidget {
 
 class _PlantsTextState extends State<PlantsText> {
 
-  String _text = 'plants';
+  int _counter = 0;
+  
+  void _incrementCounter() {
+    setState(() {
+      _counter++;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Text(_text);
+    return Row(
+      children: [
+        Text('$_counter'),
+        RaisedButton(onPressed: _incrementCounter)
+      ],
+    );
   }
 }
