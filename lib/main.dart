@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/main_model.dart';
+import 'package:provider/provider.dart';
 
 import 'next_page.dart';
 
@@ -7,55 +9,41 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+
+  final String text = 'テキストが入る';
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Plants Log',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.grey,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key? key, required this.title}) : super(key: key);
-
-  final String title;
-
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
-  final items = List<String>.generate(10000, (i) => "Item $i");
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Container(
-        width: double.infinity,
-        child: ListView.builder(
-          itemCount: items.length,
-          itemBuilder: (context, index) {
-            return ListTile(
-              title: Text('${items[index]}'),
+      home: ChangeNotifierProvider<MainModel>(
+        create: (_) => MainModel(),
+        child: Consumer<MainModel>(
+          builder: (context, model, child) {
+            return Scaffold(
+              appBar: AppBar(
+                title: Text('タイトルです'),
+              ),
+              body: Center(
+                  child: Text(
+                    model.text,
+                    style: TextStyle(
+                      fontSize: 30,
+                    ),
+                  )
+              ),
+              floatingActionButton: FloatingActionButton(
+                onPressed: () {
+                  model.changeText();
+                },
+              ),
             );
-          },
-        )
-      )
+          }
+        ),
+      ),
     );
   }
 }
