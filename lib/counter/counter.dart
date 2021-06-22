@@ -16,23 +16,40 @@ class Counter extends StatelessWidget {
             ),
             body: Center(
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Text(
-                    'You have pushed the button this many times:',
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Column(
+                    children: <Widget>[
+                      Text(
+                        'You have pushed the button this many times:',
+                      ),
+                      Text(
+                        '${model.counter}',
+                        style: Theme.of(context).textTheme.display1,
+                      ),
+                    ],
                   ),
-                  Text(
-                    '${model.counter}',
-                    style: Theme.of(context).textTheme.display1,
-                  ),
+                  Center(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        FloatingActionButton(
+                          onPressed: () {
+                            model.countDown();
+                          },
+                          child: Icon(Icons.delete),
+                        ),
+                        FloatingActionButton(
+                          onPressed: () {
+                            model.countUp();
+                          },
+                          child: Icon(Icons.add),
+                        )
+                      ],
+                    ),
+                  )
                 ],
               )
-            ),
-            floatingActionButton: FloatingActionButton(
-              onPressed: () {
-                model.countUp();
-              },
-              child: Icon(Icons.add)
             ),
           );
         }
