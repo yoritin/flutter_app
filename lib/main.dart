@@ -13,7 +13,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Plants Log',
       theme: ThemeData(
         primarySwatch: Colors.grey,
       ),
@@ -23,28 +22,43 @@ class MyApp extends StatelessWidget {
           builder: (context, model, child) {
             return Scaffold(
               appBar: AppBar(
-                title: Text('タイトルです'),
+                title: Text('Flutterでいろいろなアプリを作る'),
               ),
-              body: Row(
-                children: [
-                  Text(
-                    model.text,
-                    style: TextStyle(
-                      fontSize: 30,
+              body: Center(
+                child: Column(
+                  children: [
+                    Container(
+                      child: Text(
+                        model.text,
+                        style: TextStyle(
+                          fontSize: 30,
+                        ),
+                      ),
                     ),
-                  ),
-                  RaisedButton(
-                    child: Text('カウンター'),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => Counter(),
-                        )
-                      );
-                    }
-                  )
-                ]
+                    RaisedButton(
+                      child: Text('Counter'),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Counter(),
+                          )
+                        );
+                      }
+                    ),
+                    RaisedButton(
+                      child: Text('Todo List'),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Counter(),
+                          )
+                        );
+                      }
+                    ),
+                  ]
+                ),
               ),
               floatingActionButton: FloatingActionButton(
                 onPressed: () {
