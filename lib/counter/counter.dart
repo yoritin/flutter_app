@@ -6,15 +6,15 @@ import 'counter_model.dart';
 class Counter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider<CounterModel>(
-      create: (_) => CounterModel(),
-      child: Consumer<CounterModel>(
-        builder: (context, model, child) {
-          return Scaffold(
-            appBar: AppBar(
-              title: Text('Counter')
-            ),
-            body: Center(
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Counter')
+      ),
+      body: ChangeNotifierProvider<CounterModel>(
+        create: (_) => CounterModel(),
+        child: Consumer<CounterModel>(
+          builder: (context, model, child) {
+            return Center(
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
@@ -37,7 +37,7 @@ class Counter extends StatelessWidget {
                           onPressed: () {
                             model.countDown();
                           },
-                          child: Icon(Icons.delete),
+                          child: Icon(Icons.remove),
                         ),
                         FloatingActionButton(
                           onPressed: () {
@@ -50,9 +50,9 @@ class Counter extends StatelessWidget {
                   )
                 ],
               )
-            ),
-          );
-        }
+            );
+          }
+        )
       ),
     );
   }
