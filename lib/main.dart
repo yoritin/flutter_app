@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'counter/counter.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -12,25 +14,36 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.green,
       ),
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Flutterでいろいろなアプリを作る'),
-        ),
-        body: Center(
-          child: Column(
-            children: [
-              RaisedButton(
+      home: AppList()
+    );
+  }
+}
+
+class AppList extends StatelessWidget {
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Flutterでいろいろなアプリを作る'),
+      ),
+      body: Center(
+        child: Column(
+          children: [
+            Container(
+              child: RaisedButton(
                 child: Text('Counter'),
-                onPressed: () {}
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Counter())
+                  );
+                }
               ),
-              RaisedButton(
-                child: Text('Todo List'),
-                onPressed: () {}
-              ),
-            ]
-          ),
+            ),
+          ]
         ),
-      )
+      ),
     );
   }
 }
