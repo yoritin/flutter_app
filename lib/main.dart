@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/main_model.dart';
 import 'package:provider/provider.dart';
 
-import 'next_page.dart';
+import 'counter/counter.dart';
 
 void main() {
   runApp(MyApp());
@@ -10,14 +10,11 @@ void main() {
 
 class MyApp extends StatelessWidget {
 
-  final String text = 'テキストが入る';
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Plants Log',
       theme: ThemeData(
-        primarySwatch: Colors.grey,
+        primarySwatch: Colors.green,
       ),
       home: ChangeNotifierProvider<MainModel>(
         create: (_) => MainModel(),
@@ -25,15 +22,43 @@ class MyApp extends StatelessWidget {
           builder: (context, model, child) {
             return Scaffold(
               appBar: AppBar(
-                title: Text('タイトルです'),
+                title: Text('Flutterでいろいろなアプリを作る'),
               ),
               body: Center(
-                  child: Text(
-                    model.text,
-                    style: TextStyle(
-                      fontSize: 30,
+                child: Column(
+                  children: [
+                    Container(
+                      child: Text(
+                        model.text,
+                        style: TextStyle(
+                          fontSize: 30,
+                        ),
+                      ),
                     ),
-                  )
+                    RaisedButton(
+                      child: Text('Counter'),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Counter(),
+                          )
+                        );
+                      }
+                    ),
+                    RaisedButton(
+                      child: Text('Todo List'),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Counter(),
+                          )
+                        );
+                      }
+                    ),
+                  ]
+                ),
               ),
               floatingActionButton: FloatingActionButton(
                 onPressed: () {
