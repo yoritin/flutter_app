@@ -41,6 +41,17 @@ class AppList extends StatelessWidget {
                 }
               ),
             ),
+            Container(
+              child: RaisedButton(
+                child: Text('Todo List'),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Counter())
+                  );
+                }
+              ),
+            ),
           ]
         ),
       ),
