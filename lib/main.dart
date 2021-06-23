@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'counter/counter.dart';
+import 'todo_list/todo_list.dart';
 
 void main() {
   runApp(MyApp());
@@ -47,7 +48,7 @@ class AppList extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => Counter())
+                    MaterialPageRoute(builder: (context) => TodoList())
                   );
                 }
               ),
