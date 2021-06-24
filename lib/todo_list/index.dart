@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/todo_list/add.dart';
 
 class TodoList extends StatelessWidget {
 
@@ -27,7 +28,12 @@ class TodoList extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => AddTodo())
+          );
+        },
       ),
     );
   }
