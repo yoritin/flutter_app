@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'app_list.dart';
-import 'counter/counter.dart';
-import 'todo_list/index.dart';
+import 'app/index.dart';
 
 void main() {
   runApp(MyApp());
