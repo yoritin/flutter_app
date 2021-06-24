@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'app_list.dart';
 import 'counter/counter.dart';
-import 'todo_list/todo_list.dart';
+import 'todo_list/index.dart';
 
 void main() {
   runApp(MyApp());

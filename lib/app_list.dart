@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'counter/counter.dart';
-import 'todo_list/todo_list.dart';
+import 'todo_list/index.dart';
 
 class AppList extends StatelessWidget {
 
