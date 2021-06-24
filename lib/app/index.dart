@@ -15,7 +15,7 @@ class AppList extends StatelessWidget {
         child: Column(
           children: [
             Container(
-              child: RaisedButton(
+              child: ElevatedButton(
                 child: Text('Counter'),
                 onPressed: () {
                   Navigator.push(
@@ -26,7 +26,7 @@ class AppList extends StatelessWidget {
               ),
             ),
             Container(
-              child: RaisedButton(
+              child: ElevatedButton(
                 child: Text('Todo List'),
                 onPressed: () {
                   Navigator.push(

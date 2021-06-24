@@ -22,7 +22,7 @@ class TodoList extends StatelessWidget {
                 itemBuilder: (context, index) {
                   return Card(
                     child: ListTile(
-                        title: Text(model.todos[index])
+                      title: Text(model.todos[index])
                     ),
                   );
                 },
