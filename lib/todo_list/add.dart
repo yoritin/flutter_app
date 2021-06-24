@@ -8,8 +8,30 @@ class AddTodo extends StatelessWidget {
       appBar: AppBar(
         title: Text('Add Todo'),
       ),
-      body: Center(
-        child: Text('Todoを追加する'),
+      body: Container(
+        margin: EdgeInsets.all(60),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            TextField(),
+            Container(
+              width: double.infinity,
+              child: ElevatedButton(
+                child: Text('Add'),
+                onPressed: () {}
+              ),
+            ),
+            Container(
+              width: double.infinity,
+              child: TextButton(
+                child: Text('cancel'),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              )
+            )
+          ],
+        ),
       ),
     );
   }
