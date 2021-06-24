@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/todo_list/todo_model.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_app/todo_list/todo_model.dart';
 
 class AddTodo extends StatefulWidget {
   @override
