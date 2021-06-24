@@ -33,11 +33,18 @@ class TodoList extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
-        onPressed: () {
-          Navigator.push(
+        onPressed: () async {
+          final result = await Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => AddTodo())
+            MaterialPageRoute(
+              builder: (context) => AddTodo()
+            )
           );
+
+          if (result != null) {
+            // modelからaddTodoを呼び出す
+            print(result);
+          }
         },
       ),
     );

@@ -1,6 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/todo_list/todo_model.dart';
+import 'package:provider/provider.dart';
 
-class AddTodo extends StatelessWidget {
+class AddTodo extends StatefulWidget {
+  @override
+  _AddTodoState createState() => _AddTodoState();
+}
+
+class _AddTodoState extends State<AddTodo> {
+  String _text = '';
 
   @override
   Widget build(BuildContext context) {
@@ -8,29 +16,42 @@ class AddTodo extends StatelessWidget {
       appBar: AppBar(
         title: Text('Add Todo'),
       ),
-      body: Container(
-        margin: EdgeInsets.all(60),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            TextField(),
-            Container(
-              width: double.infinity,
-              child: ElevatedButton(
-                child: Text('Add'),
-                onPressed: () {}
+      body: ChangeNotifierProvider<TodoModel>(
+        create: (_) => TodoModel(),
+        child: Consumer<TodoModel>(
+          builder: (context, model, child) {
+            return Container(
+              margin: EdgeInsets.all(60),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  TextField(
+                    onChanged: (String value) {
+                      _text = value;
+                    },
+                  ),
+                  Container(
+                    width: double.infinity,
+                    child: ElevatedButton(
+                      child: Text('Add'),
+                      onPressed: () {
+                        Navigator.of(context).pop(_text);
+                      }
+                    ),
+                  ),
+                  Container(
+                    width: double.infinity,
+                    child: TextButton(
+                      child: Text('cancel'),
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                    )
+                  )
+                ],
               ),
-            ),
-            Container(
-              width: double.infinity,
-              child: TextButton(
-                child: Text('cancel'),
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-              )
-            )
-          ],
+            );
+          }
         ),
       ),
     );
