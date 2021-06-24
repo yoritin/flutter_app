@@ -3,6 +3,12 @@ import 'package:flutter_app/todo_list/add.dart';
 
 class TodoList extends StatelessWidget {
 
+  final todos = [
+    'aaa',
+    'bbb',
+    'ccc'
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -11,19 +17,15 @@ class TodoList extends StatelessWidget {
       ),
       body: Container(
         width: double.infinity,
-        child: ListView(
-          children: [
-            Card(
+        child: ListView.builder(
+          itemCount: todos.length,
+          itemBuilder: (context, index) {
+            return Card(
               child: ListTile(
-                title: Text('ビーサンを買う'),
+                title: Text(todos[index])
               ),
-            ),
-            Card(
-              child: ListTile(
-                title: Text('シュノーケルマスクを買う'),
-              ),
-            ),
-          ],
+            );
+          },
         ),
       ),
       floatingActionButton: FloatingActionButton(
