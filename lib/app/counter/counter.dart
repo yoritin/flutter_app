@@ -33,17 +33,25 @@ class Counter extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        FloatingActionButton(
-                          onPressed: () {
-                            model.countDown();
-                          },
-                          child: Icon(Icons.remove),
+                        Container(
+                          margin: EdgeInsets.all(10),
+                          child: FloatingActionButton(
+                            heroTag: "hero1",
+                            onPressed: () {
+                              model.countDown();
+                            },
+                            child: Icon(Icons.remove),
+                          ),
                         ),
-                        FloatingActionButton(
-                          onPressed: () {
-                            model.countUp();
-                          },
-                          child: Icon(Icons.add),
+                        Container(
+                          margin: EdgeInsets.all(10),
+                          child: FloatingActionButton(
+                            heroTag: "hero2",
+                            onPressed: () {
+                              model.countUp();
+                            },
+                            child: Icon(Icons.add),
+                          ),
                         )
                       ],
                     ),
