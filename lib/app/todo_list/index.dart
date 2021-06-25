@@ -21,8 +21,13 @@ class TodoList extends StatelessWidget {
                 itemCount: model.todos.length,
                 itemBuilder: (context, index) {
                   return Card(
-                    child: ListTile(
-                      title: Text(model.todos[index])
+                    child: CheckboxListTile(
+                      title: Text(model.todos[index]),
+                      controlAffinity: ListTileControlAffinity.leading,
+                      value: model.flag,
+                      onChanged: (bool? value) {
+                        model.handleCheckbox(value);
+                      },
                     ),
                   );
                 },
