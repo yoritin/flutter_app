@@ -25,7 +25,6 @@ class Counter extends StatelessWidget {
                       ),
                       Text(
                         '${model.counter}',
-                        style: Theme.of(context).textTheme.display1,
                       ),
                     ],
                   ),

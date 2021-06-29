@@ -2,16 +2,18 @@ import 'package:flutter/material.dart';
 
 class TodoModel extends ChangeNotifier {
 
-  var todos = [];
-  bool flag = true;
+  List<String> todos = [];
+  List<bool> statuses = [];
 
   void addTodo(String value) {
     todos.add(value);
+    statuses.add(false);
     notifyListeners();
   }
 
-  void handleCheckbox(bool? value) {
-    flag = value!;
+  void handleCheckbox(bool? value, int i) {
+    statuses[i] = value!;
+    // flag = value!;
     notifyListeners();
   }
 }

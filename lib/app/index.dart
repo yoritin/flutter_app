@@ -9,7 +9,7 @@ class AppList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Flutterでいろいろなアプリを作るa'),
+        title: Text('Flutterでいろいろなアプリを作る'),
       ),
       body: Center(
         child: Column(

@@ -24,9 +24,9 @@ class TodoList extends StatelessWidget {
                     child: CheckboxListTile(
                       title: Text(model.todos[index]),
                       controlAffinity: ListTileControlAffinity.leading,
-                      value: model.flag,
+                      value: model.statuses[index],
                       onChanged: (bool? value) {
-                        model.handleCheckbox(value);
+                        model.handleCheckbox(value, index);
                       },
                     ),
                   );
