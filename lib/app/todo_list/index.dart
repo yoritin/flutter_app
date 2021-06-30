@@ -20,9 +20,20 @@ class TodoList extends StatelessWidget {
               child: ListView.builder(
                 itemCount: model.todos.length,
                 itemBuilder: (context, index) {
-                  return Card(
-                    child: ListTile(
-                      title: Text(model.todos[index])
+                  return Dismissible(
+                    key: Key(model.todos[index]),
+                    onDismissed: (direction) {
+                      model.deleteTodo(index);
+                    },
+                    child: Card(
+                      child: CheckboxListTile(
+                        title: Text(model.todos[index]),
+                        controlAffinity: ListTileControlAffinity.leading,
+                        value: model.statuses[index],
+                        onChanged: (bool? value) {
+                          model.handleCheckbox(value, index);
+                        },
+                      ),
                     ),
                   );
                 },
