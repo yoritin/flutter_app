@@ -10,10 +10,15 @@ class TodoModel extends ChangeNotifier {
     statuses.add(false);
     notifyListeners();
   }
+  
+  void deleteTodo(int index) {
+    todos.removeAt(index);
+    statuses.removeAt(index);
+    notifyListeners();
+  }
 
-  void handleCheckbox(bool? value, int i) {
-    statuses[i] = value!;
-    // flag = value!;
+  void handleCheckbox(bool? value, int index) {
+    statuses[index] = value!;
     notifyListeners();
   }
 }
