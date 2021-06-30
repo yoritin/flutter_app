@@ -11,6 +11,34 @@ class AppList extends StatelessWidget {
       appBar: AppBar(
         title: Text('Flutterでいろいろなアプリを作る'),
       ),
+      drawer: Drawer(
+        child: ListView(
+          children: <Widget>[
+            InkWell(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Counter())
+                );
+              },
+              child: ListTile(
+                title: Text('Counter'),
+              ),
+            ),
+            InkWell(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => TodoList())
+                );
+              },
+              child: ListTile(
+                title: Text('Todo List'),
+              ),
+            ),
+          ],
+        ),
+      ),
       body: Center(
         child: Column(
           children: [
