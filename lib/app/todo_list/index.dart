@@ -17,27 +17,37 @@ class TodoList extends StatelessWidget {
             ),
             body: Container(
               width: double.infinity,
-              child: ListView.builder(
-                itemCount: model.todos.length,
-                itemBuilder: (context, index) {
-                  return Dismissible(
-                    key: Key(model.todos[index]),
-                    onDismissed: (direction) {
-                      model.deleteTodo(index);
-                    },
-                    child: Card(
-                      child: CheckboxListTile(
-                        title: Text(model.todos[index]),
-                        controlAffinity: ListTileControlAffinity.leading,
-                        value: model.statuses[index],
-                        onChanged: (bool? value) {
-                          model.handleCheckbox(value, index);
-                        },
-                      ),
-                    ),
+              child: (() {
+                if (model.todos.length == 0) {
+                  // Todoが登録されていない場合
+                  return Center(
+                    child: Text('Todoがないよ'),
                   );
-                },
-              ),
+                } else {
+                  // Todoが登録されている場合
+                  return ListView.builder(
+                    itemCount: model.todos.length,
+                    itemBuilder: (context, index) {
+                      return Dismissible(
+                        key: Key(model.todos[index]),
+                        onDismissed: (direction) {
+                          model.deleteTodo(index);
+                        },
+                        child: Card(
+                          child: CheckboxListTile(
+                            title: Text(model.todos[index]),
+                            controlAffinity: ListTileControlAffinity.leading,
+                            value: model.statuses[index],
+                            onChanged: (bool? value) {
+                              model.handleCheckbox(value, index);
+                            },
+                          ),
+                        ),
+                      );
+                    },
+                  );
+                }
+              })(),
             ),
             floatingActionButton: FloatingActionButton(
               child: Icon(Icons.add),
