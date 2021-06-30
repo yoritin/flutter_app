@@ -26,6 +26,7 @@ class _AddTodoState extends State<AddTodo> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   TextField(
+                    autofocus: true,
                     onChanged: (String value) {
                       _text = value;
                     },
